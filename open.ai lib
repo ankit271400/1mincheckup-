@@ -1,0 +1,72 @@
+import { apiRequest } from "./queryClient";
+
+export interface AIResponse {
+  message: string;
+  timestamp: string;
+}
+
+export interface BloodSugarAnalysis {
+  status: 'Normal' | 'Elevated' | 'High' | 'Very High' | 'Low' | 'Very Low';
+  suggestion: string;
+  riskLevel: number; // 0-100 scale
+}
+
+export interface BloodPressureAnalysis {
+  status: 'Normal' | 'Elevated' | 'Hypertension Stage 1' | 'Hypertension Stage 2' | 'Hypertensive Crisis' | 'Low';
+  suggestion: string;
+  riskLevel: number; // 0-100 scale
+}
+
+export async function analyzeBloodSugar(value: number, previousReadings?: number[]): Promise<BloodSugarAnalysis> {
+  try {
+    const response = await apiRequest('POST', '/api/ai/analyze-blood-sugar', {
+      value,
+      previousReadings
+    });
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error analyzing blood sugar:', error);
+    return {
+      status: 'Normal',
+      suggestion: 'Unable to analyze. Please try again later.',
+      riskLevel: 0
+    };
+  }
+}
+
+export async function analyzeBloodPressure(
+  systolic: number, 
+  diastolic: number, 
+  previousReadings?: { systolic: number, diastolic: number }[]
+): Promise<BloodPressureAnalysis> {
+  try {
+    const response = await apiRequest('POST', '/api/ai/analyze-blood-pressure', {
+      systolic,
+      diastolic,
+      previousReadings
+    });
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error analyzing blood pressure:', error);
+    return {
+      status: 'Normal',
+      suggestion: 'Unable to analyze. Please try again later.',
+      riskLevel: 0
+    };
+  }
+}
+
+export async function askAIAssistant(question: string): Promise<AIResponse> {
+  try {
+    const response = await apiRequest('POST', '/api/ai/ask', { question });
+    return await response.json();
+  } catch (error) {
+    console.error('Error asking AI assistant:', error);
+    return {
+      message: 'I apologize, but I encountered an error. Please try again later.',
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+  }
+}
