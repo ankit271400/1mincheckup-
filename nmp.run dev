@@ -1,0 +1,478 @@
+rest-express@1.0.0 dev
+Error seeding initial data: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async seedInitialData (/home/runner/workspace/server/storage.ts:199:27) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:42:08 AM [express] serving on port 5000
+Browserslist: browsers data (caniuse-lite) is 7 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getBloodSugarReadings (/home/runner/workspace/server/storage.ts:86:12)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:272:22) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:42:20 AM [express] GET /api/readings/blood-sugar 500 in 114ms :: {"message":"Control plane request…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getBloodPressureReadings (/home/runner/workspace/server/storage.ts:120:12)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:371:22) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:42:20 AM [express] GET /api/readings/blood-pressure 500 in 99ms :: {"message":"Control plane reque…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:42:20 AM [express] GET /api/readings/summary 500 in 96ms :: {"message":"Control plane request fail…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getBloodSugarReadings (/home/runner/workspace/server/storage.ts:86:12)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:472:34) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:42:20 AM [express] GET /api/readings/recent 500 in 101ms :: {"message":"Control plane request fail…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getDevices (/home/runner/workspace/server/storage.ts:154:12)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:599:23) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:42:20 AM [express] GET /api/devices 500 in 117ms :: {"message":"Control plane request failed: endp…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:43:21 AM [express] GET /api/readings/summary 500 in 120ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:44:21 AM [express] GET /api/readings/summary 500 in 111ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:45:22 AM [express] GET /api/readings/summary 500 in 128ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:46:22 AM [express] GET /api/readings/summary 500 in 112ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:50:24 AM [express] GET /api/readings/summary 500 in 118ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:52:24 AM [express] GET /api/readings/summary 500 in 108ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:53:25 AM [express] GET /api/readings/summary 500 in 101ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:55:25 AM [express] GET /api/readings/summary 500 in 122ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:56:26 AM [express] GET /api/readings/summary 500 in 98ms :: {"message":"Control plane request fail…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:57:26 AM [express] GET /api/readings/summary 500 in 108ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:58:27 AM [express] GET /api/readings/summary 500 in 110ms :: {"message":"Control plane request fai…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+5:59:27 AM [express] GET /api/readings/summary 500 in 95ms :: {"message":"Control plane request fail…
+Error: error: Control plane request failed: endpoint is disabled
+    at file:///home/runner/workspace/node_modules/@neondatabase/serverless/index.mjs:1345:74
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async NeonPreparedQuery.execute (/home/runner/workspace/node_modules/src/neon-serverless/session.ts:102:18)
+    at async DatabaseStorage.getLatestBloodSugarReading (/home/runner/workspace/server/storage.ts:104:23)
+    at async <anonymous> (/home/runner/workspace/server/routes.ts:412:32) {
+  length: 71,
+  severity: 'ERROR',
+  code: 'XX000',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: undefined,
+  line: undefined,
+  routine: undefined
+}
+6:01:28 AM [express] GET /api/readings/summary 500 in 100ms :: {"message":"Control plane request fai…
