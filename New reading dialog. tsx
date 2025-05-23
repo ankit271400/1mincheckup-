@@ -1,0 +1,270 @@
+import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogHeader } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useToast } from "@/hooks/use-toast";
+
+interface NewReadingDialogProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+type ReadingType = "blood_sugar" | "blood_pressure";
+
+export function NewReadingDialog({ open, onOpenChange }: NewReadingDialogProps) {
+  const [readingType, setReadingType] = useState<ReadingType>("blood_sugar");
+  const [bloodSugarValue, setBloodSugarValue] = useState("");
+  const [systolicValue, setSystolicValue] = useState("");
+  const [diastolicValue, setDiastolicValue] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 16));
+  const [notes, setNotes] = useState("");
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const resetForm = () => {
+    setReadingType("blood_sugar");
+    setBloodSugarValue("");
+    setSystolicValue("");
+    setDiastolicValue("");
+    setDate(new Date().toISOString().slice(0, 16));
+    setNotes("");
+  };
+
+  const mutation = useMutation({
+    mutationFn: async (data: any) => {
+      const endpoint = readingType === "blood_sugar" 
+        ? "/api/readings/blood-sugar" 
+        : "/api/readings/blood-pressure";
+      
+      return apiRequest("POST", endpoint, data);
+    },
+    onSuccess: () => {
+      // Invalidate queries to update the UI
+      queryClient.invalidateQueries({ queryKey: ['/api/readings/summary'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/readings/recent'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/readings/blood-sugar'] });
+      queryClient.invalidateQueries({ queryKey: ['/api/readings/blood-pressure'] });
+      
+      // Close the dialog and reset form
+      onOpenChange(false);
+      resetForm();
+      
+      // Show success toast
+      toast({
+        title: "Reading saved",
+        description: "Your health reading has been successfully saved.",
+      });
+    },
+    onError: (error) => {
+      console.error("Error saving reading:", error);
+      toast({
+        title: "Error saving reading",
+        description: "There was a problem saving your reading. Please try again.",
+        variant: "destructive",
+      });
+    }
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate the form
+    if (readingType === "blood_sugar" && !bloodSugarValue) {
+      toast({
+        title: "Missing value",
+        description: "Please enter a blood sugar value.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    if (readingType === "blood_pressure" && (!systolicValue || !diastolicValue)) {
+      toast({
+        title: "Missing values",
+        description: "Please enter both systolic and diastolic values.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Prepare the data
+    const formData = {
+      timestamp: new Date(date).toISOString(),
+      notes,
+      ...(readingType === "blood_sugar" 
+        ? { value: parseInt(bloodSugarValue, 10) } 
+        : { 
+            systolic: parseInt(systolicValue, 10),
+            diastolic: parseInt(diastolicValue, 10)
+          }
+      )
+    };
+    
+    // Submit the data
+    mutation.mutate(formData);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={(newOpen) => {
+      if (!newOpen) {
+        resetForm();
+      }
+      onOpenChange(newOpen);
+    }}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-lg font-medium text-neutral-500">Add New Reading</DialogTitle>
+          <DialogDescription className="text-neutral-400">
+            Record your latest health measurements
+          </DialogDescription>
+        </DialogHeader>
+        
+        <form onSubmit={handleSubmit} className="mt-4">
+          <div className="mb-4">
+            <Label className="text-neutral-500 text-sm font-medium mb-2">Reading Type</Label>
+            <div className="grid grid-cols-2 gap-2 mt-1">
+              <Button
+                type="button"
+                className={`flex items-center justify-center gap-1 ${
+                  readingType === "blood_sugar" 
+                    ? "bg-primary text-white"
+                    : "bg-white text-neutral-500 border border-neutral-200 hover:bg-neutral-100"
+                }`}
+                onClick={() => setReadingType("blood_sugar")}
+              >
+                <span className="material-icons text-sm">bloodtype</span>
+                <span>Blood Sugar</span>
+              </Button>
+              <Button
+                type="button"
+                className={`flex items-center justify-center gap-1 ${
+                  readingType === "blood_pressure" 
+                    ? "bg-primary text-white"
+                    : "bg-white text-neutral-500 border border-neutral-200 hover:bg-neutral-100"
+                }`}
+                onClick={() => setReadingType("blood_pressure")}
+              >
+                <span className="material-icons text-sm">favorite</span>
+                <span>Blood Pressure</span>
+              </Button>
+            </div>
+          </div>
+          
+          {readingType === "blood_sugar" ? (
+            <div className="mb-4">
+              <Label htmlFor="reading_value" className="text-neutral-500 text-sm font-medium mb-2">
+                Blood Sugar Value
+              </Label>
+              <div className="flex items-center mt-1">
+                <Input
+                  id="reading_value"
+                  type="number"
+                  placeholder="e.g. 120"
+                  value={bloodSugarValue}
+                  onChange={(e) => setBloodSugarValue(e.target.value)}
+                  className="flex-1"
+                />
+                <span className="ml-2 text-neutral-400">mg/dL</span>
+              </div>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <Label htmlFor="systolic_value" className="text-neutral-500 text-sm font-medium mb-2">
+                  Systolic (top)
+                </Label>
+                <div className="flex items-center mt-1">
+                  <Input
+                    id="systolic_value"
+                    type="number"
+                    placeholder="e.g. 120"
+                    value={systolicValue}
+                    onChange={(e) => setSystolicValue(e.target.value)}
+                    className="flex-1"
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="diastolic_value" className="text-neutral-500 text-sm font-medium mb-2">
+                  Diastolic (bottom)
+                </Label>
+                <div className="flex items-center mt-1">
+                  <Input
+                    id="diastolic_value"
+                    type="number"
+                    placeholder="e.g. 80"
+                    value={diastolicValue}
+                    onChange={(e) => setDiastolicValue(e.target.value)}
+                    className="flex-1"
+                  />
+                </div>
+              </div>
+              <div className="col-span-2 text-right text-neutral-400 text-sm">
+                mmHg
+              </div>
+            </div>
+          )}
+          
+          <div className="mb-4">
+            <Label htmlFor="reading_date" className="text-neutral-500 text-sm font-medium mb-2">
+              Date & Time
+            </Label>
+            <Input
+              id="reading_date"
+              type="datetime-local"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="mt-1"
+            />
+          </div>
+          
+          <div className="mb-6">
+            <Label htmlFor="reading_notes" className="text-neutral-500 text-sm font-medium mb-2">
+              Notes
+            </Label>
+            <Textarea
+              id="reading_notes"
+              rows={3}
+              placeholder="Add any relevant information..."
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              className="mt-1"
+            />
+          </div>
+          
+          <div className="flex justify-end gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => onOpenChange(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              className="bg-primary text-white hover:bg-primary/90"
+              disabled={mutation.isPending}
+            >
+              {mutation.isPending ? (
+                <>
+                  <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-opacity-20 border-t-white"></div>
+                  Processing...
+                </>
+              ) : (
+                "Save Reading"
+              )}
+            </Button>
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+          
+       
